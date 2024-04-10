@@ -6,6 +6,7 @@ from openai import OpenAI
 parser = argparse.ArgumentParser(description="Explain the meaning of a symbol in code")
 parser.add_argument("name", type=str, help="The symbol to search for")
 parser.add_argument(
+    "-s",
     "--searcher",
     type=str,
     default="rg",
