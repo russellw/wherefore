@@ -6,6 +6,9 @@ from openai import OpenAI
 parser = argparse.ArgumentParser(description="Explain the meaning of a symbol in code")
 parser.add_argument("name", type=str, help="The symbol to search for")
 parser.add_argument(
+    "path", type=str, nargs="?", help="The path to search (default: current directory)"
+)
+parser.add_argument(
     "-C",
     "--context",
     type=int,
@@ -22,6 +25,8 @@ parser.add_argument(
 args = parser.parse_args()
 name = args.name
 
-command = [args.searcher, "-w", "-C", args.context, args.name]
+command = [args.searcher, "-w", "-C", str(args.context), args.name]
+if args.path is not None:
+    command.append(args.path)
 result = subprocess.run(command, capture_output=True, text=True, check=True)
 print("ripgrep output:\n", result.stdout)
