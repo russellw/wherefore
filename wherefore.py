@@ -6,6 +6,13 @@ from openai import OpenAI
 parser = argparse.ArgumentParser(description="Explain the meaning of a symbol in code")
 parser.add_argument("name", type=str, help="The symbol to search for")
 parser.add_argument(
+    "-C",
+    "--context",
+    type=int,
+    default=5,
+    help="The number of context lines to show around matches",
+)
+parser.add_argument(
     "-s",
     "--searcher",
     type=str,
@@ -15,6 +22,6 @@ parser.add_argument(
 args = parser.parse_args()
 name = args.name
 
-command = [args.searcher, "-w", "-C", "10", args.name]
+command = [args.searcher, "-w", "-C", args.context, args.name]
 result = subprocess.run(command, capture_output=True, text=True, check=True)
 print("ripgrep output:\n", result.stdout)
