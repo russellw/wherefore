@@ -15,6 +15,6 @@ parser.add_argument(
 args = parser.parse_args()
 name = args.name
 
-command = [args.searcher, "-C", "10", args.name]
+command = [args.searcher, "-w", "-C", "10", args.name]
 result = subprocess.run(command, capture_output=True, text=True, check=True)
 print("ripgrep output:\n", result.stdout)
