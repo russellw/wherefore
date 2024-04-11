@@ -1,4 +1,32 @@
-python wherefore.py OPT_ASSUME_COMPLETENESS \src\eprover
+# wherefore
+
+A common requirement when working on an unfamiliar code base (or a previously familiar one, after the passing of time): what does this symbol mean? Where is it defined? How is it used?
+
+Wherefore uses an existing tool such as `rg` or `ag` to search for occurrences of a symbol (with a few context lines in each case), feeds the result to GPT with a request for explanation, prints the response.
+
+```
+usage: wherefore.py [-h] [-C CONTEXT] [-s SEARCHER] name [path]
+
+Explain the meaning of a symbol in code
+
+positional arguments:
+  name                  The symbol to search for
+  path                  The path to search (default: current directory)
+
+options:
+  -h, --help            show this help message and exit
+  -C CONTEXT, --context CONTEXT
+                        The number of context lines to show around matches
+  -s SEARCHER, --searcher SEARCHER
+                        The searcher tool to use (default: 'rg')
+```
+
+Requires an OpenAI API account, with the key in the environment variable `OPENAI_API_KEY`.
+
+```
+C:\wherefore> python wherefore.py OPT_ASSUME_COMPLETENESS \src\eprover
+```
+
 The `OPT_ASSUME_COMPLETENESS` option is defined in the file `e_options.h` in the code base. It is part of a list of possible options that can be passed to the prover. Here is a snippet of the code where `OPT_ASSUME_COMPLETENESS` is defined:
 
 ```c
