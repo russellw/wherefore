@@ -2,7 +2,7 @@
 
 A common requirement when working on an unfamiliar code base (or a previously familiar one, after the passing of time): what does this symbol mean? Where is it defined? How is it used?
 
-Wherefore uses an existing tool such as `rg` or `ag` to search for occurrences of a symbol (with a few context lines in each case), feeds the result to GPT with a request for explanation, prints the response.
+Wherefore uses an existing tool such as `rg` or `ag` to search for occurrences of a symbol (with a few context lines in each case), feeds the result to GPT with a request for explanation, prints the response. ("Wherefore" sounds like it might mean *where*, but actually means *why*.)
 
 ```
 usage: wherefore.py [-h] [-C CONTEXT] [-s SEARCHER] name [path]
