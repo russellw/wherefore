@@ -23,9 +23,13 @@ options:
 
 Requires an OpenAI API account, with the key in the environment variable `OPENAI_API_KEY`.
 
+An example query, in the code of [the E theorem prover](https://github.com/eprover/eprover):
+
 ```
 C:\wherefore> python wherefore.py OPT_ASSUME_COMPLETENESS \src\eprover
 ```
+
+And the response:
 
 The `OPT_ASSUME_COMPLETENESS` option is defined in the file `e_options.h` in the code base. It is part of a list of possible options that can be passed to the prover. Here is a snippet of the code where `OPT_ASSUME_COMPLETENESS` is defined:
 
