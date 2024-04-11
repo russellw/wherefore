@@ -13,7 +13,7 @@ parser.add_argument(
     "--context",
     type=int,
     default=5,
-    help="The number of context lines to show around matches",
+    help="The number of context lines to show around matches (default: 5)",
 )
 parser.add_argument(
     "-m",

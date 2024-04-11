@@ -17,6 +17,7 @@ options:
   -h, --help            show this help message and exit
   -C CONTEXT, --context CONTEXT
                         The number of context lines to show around matches
+                        (default: 5)
   -m MODEL, --model MODEL
                         The GPT model (default: 'gpt-3.5-turbo')
   -s SEARCHER, --searcher SEARCHER
