@@ -16,6 +16,9 @@ parser.add_argument(
     help="The number of context lines to show around matches (default: 5)",
 )
 parser.add_argument(
+    "-d", "--dump", action="store_true", help="Also dump the searcher output"
+)
+parser.add_argument(
     "-m",
     "--model",
     type=str,
@@ -37,7 +40,8 @@ command = [args.searcher, "-w", "-C", str(args.context), atom]
 if args.path is not None:
     command.append(args.path)
 result = subprocess.run(command, capture_output=True, text=True, check=True)
-# print(result.stdout)
+if args.dump:
+    print(result.stdout)
 
 client = OpenAI()
 system_prompt = "You are an expert at analyzing and explaining code."
