@@ -16,6 +16,13 @@ parser.add_argument(
     help="The number of context lines to show around matches",
 )
 parser.add_argument(
+    "-m",
+    "--model",
+    type=str,
+    default="gpt-3.5-turbo",
+    help="The GPT model (default: 'gpt-3.5-turbo')",
+)
+parser.add_argument(
     "-s",
     "--searcher",
     type=str,
@@ -40,6 +47,6 @@ messages = [
     {"role": "system", "content": system_prompt},
     {"role": "user", "content": user_prompt},
 ]
-response = client.chat.completions.create(model="gpt-3.5-turbo", messages=messages)
+response = client.chat.completions.create(model=args.model, messages=messages)
 r = response.choices[0].message.content
 print(r)

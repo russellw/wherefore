@@ -5,7 +5,7 @@ A common requirement when working on an unfamiliar code base (or a previously fa
 Wherefore uses an existing tool such as `rg` or `ag` to search for occurrences of a symbol (with a few context lines in each case), feeds the result to GPT with a request for explanation, prints the response. ("Wherefore" sounds like it might mean *where*, but actually means *why*.)
 
 ```
-usage: wherefore.py [-h] [-C CONTEXT] [-s SEARCHER] name [path]
+usage: wherefore.py [-h] [-C CONTEXT] [-m MODEL] [-s SEARCHER] name [path]
 
 Explain the meaning of a symbol in code
 
@@ -17,11 +17,15 @@ options:
   -h, --help            show this help message and exit
   -C CONTEXT, --context CONTEXT
                         The number of context lines to show around matches
+  -m MODEL, --model MODEL
+                        The GPT model (default: 'gpt-3.5-turbo')
   -s SEARCHER, --searcher SEARCHER
                         The searcher tool to use (default: 'rg')
 ```
 
 Requires an OpenAI API account, with the key in the environment variable `OPENAI_API_KEY`.
+
+## C example
 
 An example query, in the code of [the E theorem prover](https://github.com/eprover/eprover):
 
