@@ -1,7 +1,17 @@
 import argparse
+import re
 import subprocess
+import sys
 
 from openai import OpenAI
+
+
+def extract_last_word(s):
+    # Use a regular expression to find all word occurrences
+    words = re.findall(r"\b\w+\b", s)
+    # Return the last word, if there is any
+    return words[-1] if words else None
+
 
 parser = argparse.ArgumentParser(description="Explain the meaning of a symbol in code")
 parser.add_argument("name", type=str, help="The symbol to search for")
@@ -34,7 +44,10 @@ parser.add_argument(
 )
 args = parser.parse_args()
 compound = args.name
-atom = compound
+atom = extract_last_word(compound)
+if not atom:
+    sys.stderr.write(compound + ": contains no word\n")
+    sys.exit(1)
 
 command = [args.searcher, "-w", "-C", str(args.context), atom]
 if args.path is not None:
