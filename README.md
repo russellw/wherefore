@@ -5,7 +5,7 @@ A common requirement when working on an unfamiliar code base (or a previously fa
 Wherefore uses an existing tool such as `rg` or `ag` to search for occurrences of a symbol (with a few context lines in each case), feeds the result to GPT with a request for explanation, prints the response. ("Wherefore" sounds like it might mean *where*, but actually means *why*.)
 
 ```
-usage: wherefore.py [-h] [-C CONTEXT] [-d] [-m MODEL] [-s SEARCHER]
+usage: wherefore.py [-h] [-V] [-C CONTEXT] [-d] [-m MODEL] [-s SEARCHER]
                     name [path]
 
 Explain the meaning of a symbol in code
@@ -16,6 +16,7 @@ positional arguments:
 
 options:
   -h, --help            show this help message and exit
+  -V, --version         Show program's version number and exit
   -C CONTEXT, --context CONTEXT
                         The number of context lines to show around matches
                         (default: 5)
